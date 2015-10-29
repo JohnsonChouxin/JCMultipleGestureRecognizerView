@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  JC_TouchViewDemo
+//  JCMultipleGestureRecognizerViewDemo
 //
 //  Created by JohnsonChou on 15/10/19.
 //  Copyright © 2015年 Tapole. All rights reserved.
@@ -8,9 +8,9 @@
 
 #import "ViewController.h"
 
-#import "JC_TouchView.h"
+#import "JCMultipleGestureRecognizerView.h"
 
-@interface ViewController ()<JCTouchViewDelegate>
+@interface ViewController ()<JCMultipleGestureRecognizerDelegate>
 
 @property (nonatomic,strong) UIView * redView;
 
@@ -20,13 +20,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    JC_TouchView * touchView = [JC_TouchView new];
+    
+    JCMultipleGestureRecognizerView * touchView = [JCMultipleGestureRecognizerView new];
     touchView.frame = self.view.bounds;
     touchView.delegate = self;
     touchView.backgroundColor = [UIColor lightGrayColor];
-    [touchView tapClickBlock:^{
-        NSLog(@"111");
-    }];
     [self.view addSubview:touchView];
     
     self.redView = [UIView new];
@@ -39,21 +37,28 @@
 }
 
 #pragma mark - delegaate methods
--(void)touchView:(JC_TouchView *)touchView PanClickWithThePoint:(CGPoint)point
+-(void)JCMultipleGestureRecognizerView:(JCMultipleGestureRecognizerView *)touchView
+                  PanClickWithThePoint:(CGPoint)point
 {
     self.redView.center = CGPointMake(self.redView.center.x + point.x,
                                       self.redView.center.y + point.y);
 }
--(void)touchView:(JC_TouchView *)touchView PinchClickWithTheScale:(CGFloat)scale
+-(void)JCMultipleGestureRecognizerView:(JCMultipleGestureRecognizerView *)touchView
+                PinchClickWithTheScale:(CGFloat)scale
 {
     self.redView.transform = CGAffineTransformScale(self.redView.transform,
                                                     scale,
                                                     scale);
 }
--(void)touchView:(JC_TouchView *)touchView RotateClickWithTheRotation:(CGFloat)rotation
+-(void)JCMultipleGestureRecognizerView:(JCMultipleGestureRecognizerView *)touchView
+            RotateClickWithTheRotation:(CGFloat)rotation
 {
     self.redView.transform = CGAffineTransformRotate(self.redView.transform,
                                                      rotation);
+}
+-(void)JCMultipleGestureRecognizerViewClickWithTap:(JCMultipleGestureRecognizerView *)touchView
+{
+    NSLog(@"%@",touchView);
 }
 
 @end

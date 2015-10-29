@@ -1,44 +1,42 @@
 //
-//  JC_TouchView.m
-//  TouchDemo
+//  JCMultipleGestureRecognizer.m
+//  JC_TouchViewDemo
 //
-//  Created by JohnsonChou on 15/10/17.
+//  Created by JohnsonChou on 15/10/29.
 //  Copyright © 2015年 Tapole. All rights reserved.
 //
 #define radiansToDegrees(x) (180.0 * x / M_PI)
 
-#import "JC_TouchView.h"
 
-@interface JC_TouchView ()
+#import "JCMultipleGestureRecognizerView.h"
+
+@interface JCMultipleGestureRecognizerView ()
 // 手指数
 @property (nonatomic,assign) NSInteger fingerNumber;
 // 第一根手指
-@property (nonatomic,strong) UITouch * firstFingerTouch;
+@property (nonatomic,strong) UITouch   * firstFingerTouch;
 // 第二根手指
-@property (nonatomic,strong) UITouch * secondFingerTouch;
+@property (nonatomic,strong) UITouch   * secondFingerTouch;
 // 最近一次两指间距离
-@property (nonatomic,assign) CGFloat initialValue;
+@property (nonatomic,assign) CGFloat   initialValue;
 // 形变量
-@property (nonatomic,assign) CGFloat scale;
+@property (nonatomic,assign) CGFloat   scale;
 // 最近一次偏移角度
-@property (nonatomic,assign) CGFloat rotation;
+@property (nonatomic,assign) CGFloat   rotation;
 // 最近一次第一个触碰点
-@property (nonatomic,assign) CGPoint thePoint;
-// 点击事件
-@property (nonatomic,copy) void(^ tapClickBlock)();
-
-@property (nonatomic,assign) CGFloat scaleValue;
-
-@property (nonatomic,assign) CGFloat rotationValue;
+@property (nonatomic,assign) CGPoint   thePoint;
+// 缩放总倍数
+@property (nonatomic,assign) CGFloat   scaleValue;
+// 旋转总度数
+@property (nonatomic,assign) CGFloat   rotationValue;
 
 @end
 
-@implementation JC_TouchView
+@implementation JCMultipleGestureRecognizerView
 
 -(void)dealloc
 {
     self.delegate = nil;
-    self.tapClickBlock = nil;
 }
 
 - (instancetype)init
@@ -50,22 +48,23 @@
         self.initialValue = 0 ;
         
         self.scale = 1.0f;
+        
+        self.scaleValue = 1.0f;
+        
+        self.rotationValue = 0.0f;
     }
     return self;
 }
--(void)tapClickBlock:(void (^)())eventBlock
-{
-    self.tapClickBlock = eventBlock;
-}
--(CGFloat)getScale
+
+-(CGFloat)getTheTotalScale
 {
     return self.scaleValue;
 }
--(CGFloat)getRotation
+
+-(CGFloat)getTheTotalRotation
 {
     return self.rotationValue;
 }
-
 
 -(CGFloat)getTheLineBetweenPotin:(CGPoint)pointOne andPoint:(CGPoint)pointTwo
 {
@@ -105,8 +104,10 @@ CGFloat angleBetweenPoints(CGPoint first, CGPoint second) {
     
     CGFloat scaleNew = lineWidth/self.initialValue;
     
-    if ([self.delegate respondsToSelector:@selector(touchView:PinchClickWithTheScale:)]) {
-        [self.delegate touchView:self PinchClickWithTheScale:scaleNew];
+    self.scaleValue *= scaleNew;
+    
+    if ([self.delegate respondsToSelector:@selector(JCMultipleGestureRecognizerView:PinchClickWithTheScale:)]) {
+        [self.delegate JCMultipleGestureRecognizerView:self PinchClickWithTheScale:scaleNew];
     }
     
     self.initialValue = lineWidth;
@@ -127,8 +128,10 @@ CGFloat angleBetweenPoints(CGPoint first, CGPoint second) {
         rotationPass = -(rotation - self.rotation)/50.0;
     }
     
-    if ([self.delegate respondsToSelector:@selector(touchView:RotateClickWithTheRotation:)]) {
-        [self.delegate touchView:self RotateClickWithTheRotation:rotationPass];
+    self.rotationValue += rotationPass;
+    
+    if ([self.delegate respondsToSelector:@selector(JCMultipleGestureRecognizerView:RotateClickWithTheRotation:)]) {
+        [self.delegate JCMultipleGestureRecognizerView:self RotateClickWithTheRotation:rotationPass];
     }
     
     self.rotation = rotation;
@@ -142,8 +145,8 @@ CGFloat angleBetweenPoints(CGPoint first, CGPoint second) {
     
     self.thePoint = nextPoint;
     
-    if ([self.delegate respondsToSelector:@selector(touchView:PanClickWithThePoint:)]) {
-        [self.delegate touchView:self PanClickWithThePoint:CGPointMake(width, height)];
+    if ([self.delegate respondsToSelector:@selector(JCMultipleGestureRecognizerView:PanClickWithThePoint:)]) {
+        [self.delegate JCMultipleGestureRecognizerView:self PanClickWithThePoint:CGPointMake(width, height)];
     }
 }
 -(void)CGAffineTransformMoveForTwoFinger
@@ -158,8 +161,8 @@ CGFloat angleBetweenPoints(CGPoint first, CGPoint second) {
     
     CGPoint movePoint = CGPointMake((thisPoint.x - self.thePoint.x), (thisPoint.y-self.thePoint.y));
     
-    if ([self.delegate respondsToSelector:@selector(touchView:PanClickWithThePoint:)]) {
-        [self.delegate touchView:self PanClickWithThePoint:movePoint];
+    if ([self.delegate respondsToSelector:@selector(JCMultipleGestureRecognizerView:PanClickWithThePoint:)]) {
+        [self.delegate JCMultipleGestureRecognizerView:self PanClickWithThePoint:movePoint];
     }
     
     self.thePoint = thisPoint;
@@ -234,8 +237,8 @@ CGFloat angleBetweenPoints(CGPoint first, CGPoint second) {
             if (touch == self.firstFingerTouch) {
                 
                 if (self.firstFingerTouch.tapCount == 1) {
-                    if (self.tapClickBlock) {
-                        self.tapClickBlock();
+                    if ([self.delegate respondsToSelector:@selector(JCMultipleGestureRecognizerViewClickWithTap:)]) {
+                        [self.delegate JCMultipleGestureRecognizerViewClickWithTap:self];
                     }
                 }
                 

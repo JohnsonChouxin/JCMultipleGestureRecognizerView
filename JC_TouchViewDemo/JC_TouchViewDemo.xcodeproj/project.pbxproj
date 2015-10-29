@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C21BDC81BE1C65B00563BAA /* JCMultipleGestureRecognizerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C21BDC71BE1C65B00563BAA /* JCMultipleGestureRecognizerView.m */; };
 		2C9C51B61BD4EDA00082B7DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9C51B51BD4EDA00082B7DC /* main.m */; };
 		2C9C51B91BD4EDA00082B7DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9C51B81BD4EDA00082B7DC /* AppDelegate.m */; };
 		2C9C51BC1BD4EDA00082B7DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9C51BB1BD4EDA00082B7DC /* ViewController.m */; };
@@ -15,7 +16,6 @@
 		2C9C51C41BD4EDA00082B7DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C9C51C21BD4EDA00082B7DC /* LaunchScreen.storyboard */; };
 		2C9C51CF1BD4EDA00082B7DC /* JC_TouchViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9C51CE1BD4EDA00082B7DC /* JC_TouchViewDemoTests.m */; };
 		2C9C51DA1BD4EDA00082B7DC /* JC_TouchViewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9C51D91BD4EDA00082B7DC /* JC_TouchViewDemoUITests.m */; };
-		2C9C51E91BD4EDB40082B7DC /* JC_TouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9C51E81BD4EDB40082B7DC /* JC_TouchView.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C21BDC61BE1C65B00563BAA /* JCMultipleGestureRecognizerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCMultipleGestureRecognizerView.h; sourceTree = "<group>"; };
+		2C21BDC71BE1C65B00563BAA /* JCMultipleGestureRecognizerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCMultipleGestureRecognizerView.m; sourceTree = "<group>"; };
 		2C9C51B11BD4EDA00082B7DC /* JC_TouchViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JC_TouchViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C9C51B51BD4EDA00082B7DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2C9C51B71BD4EDA00082B7DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -52,8 +54,6 @@
 		2C9C51D51BD4EDA00082B7DC /* JC_TouchViewDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JC_TouchViewDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C9C51D91BD4EDA00082B7DC /* JC_TouchViewDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JC_TouchViewDemoUITests.m; sourceTree = "<group>"; };
 		2C9C51DB1BD4EDA00082B7DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C9C51E71BD4EDB40082B7DC /* JC_TouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JC_TouchView.h; sourceTree = "<group>"; };
-		2C9C51E81BD4EDB40082B7DC /* JC_TouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JC_TouchView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +108,8 @@
 				2C9C51B81BD4EDA00082B7DC /* AppDelegate.m */,
 				2C9C51BA1BD4EDA00082B7DC /* ViewController.h */,
 				2C9C51BB1BD4EDA00082B7DC /* ViewController.m */,
-				2C9C51E71BD4EDB40082B7DC /* JC_TouchView.h */,
-				2C9C51E81BD4EDB40082B7DC /* JC_TouchView.m */,
+				2C21BDC61BE1C65B00563BAA /* JCMultipleGestureRecognizerView.h */,
+				2C21BDC71BE1C65B00563BAA /* JCMultipleGestureRecognizerView.m */,
 				2C9C51B41BD4EDA00082B7DC /* Supporting Files */,
 			);
 			path = JC_TouchViewDemo;
@@ -278,7 +278,7 @@
 				2C9C51BC1BD4EDA00082B7DC /* ViewController.m in Sources */,
 				2C9C51B91BD4EDA00082B7DC /* AppDelegate.m in Sources */,
 				2C9C51B61BD4EDA00082B7DC /* main.m in Sources */,
-				2C9C51E91BD4EDB40082B7DC /* JC_TouchView.m in Sources */,
+				2C21BDC81BE1C65B00563BAA /* JCMultipleGestureRecognizerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +504,7 @@
 				2C9C51E01BD4EDA00082B7DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C9C51E11BD4EDA00082B7DC /* Build configuration list for PBXNativeTarget "JC_TouchViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +513,7 @@
 				2C9C51E31BD4EDA00082B7DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C9C51E41BD4EDA00082B7DC /* Build configuration list for PBXNativeTarget "JC_TouchViewDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +522,7 @@
 				2C9C51E61BD4EDA00082B7DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
