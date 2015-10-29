@@ -1,6 +1,6 @@
-# JCTouchView
-这是一个组合了缩放、旋转、点击、单指拖动、双指拖动的自定义View
-
+# JCMultipleGestureRecognizerView
+这是一个组合了缩放、旋转、点击、单指拖动、双指拖动的View.<br>
+它能识别你的复杂手势，分解成缩放和旋转、拖动（单指和双指）。通过一些算法来计算当前手势的缩放指令、旋转指令、拖动指令，并且通过代理的形式给予响应。
 # Use
 <pre><code>
 JC_TouchView * touchView = [JC_TouchView new];
