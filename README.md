@@ -9,7 +9,8 @@ JCMultipleGestureRecognizerView * touchView = [JCMultipleGestureRecognizerView n
     touchView.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:touchView];
     
-    -(void)JCMultipleGestureRecognizerView:(JCMultipleGestureRecognizerView *)touchView
+    
+-(void)JCMultipleGestureRecognizerView:(JCMultipleGestureRecognizerView *)touchView
                   PanClickWithThePoint:(CGPoint)point
 {
     self.redView.center = CGPointMake(self.redView.center.x + point.x,
