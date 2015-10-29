@@ -40,7 +40,7 @@ JCMultipleGestureRecognizerView * touchView = [JCMultipleGestureRecognizerView n
 # effect
 ![](https://github.com/JohnsonChouxin/JCTouchView/raw/master/Ges2.gif)
 
-##如果你不会用的话<br>
+##博客<br>
    这里是我的简书博客 [this is blog](http://www.jianshu.com/p/59224648828b#)<br>
 
 ##I am JohnsonChouxin
